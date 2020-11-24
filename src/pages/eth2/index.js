@@ -353,7 +353,7 @@ const upgrades = [
     emoji: ":police_car_light:",
     title: "The Beacon Chain",
     description:
-      "The first Eth2 addition to the ecosystem. The Beacon Chain will coordinate the new system, bring staking to Ethereum and lay the groundwork for future upgrades.",
+      "The first Eth2 addition to the ecosystem. The Beacon Chain will coordinate the new system, bring staking to Ethereum, and lay the groundwork for future upgrades.",
     url: "/en/eth2/beacon-chain/",
     button: "More on the Beacon Chain",
     date: "December 1, 2020",

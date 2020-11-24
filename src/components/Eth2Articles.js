@@ -31,6 +31,11 @@ const RightColumn = styled.div`
 
 const dannyArticles = [
   {
+    title: "Eth2 quick update no. 20",
+    description: "13 November 2020",
+    link: "https://blog.ethereum.org/2020/11/13/eth2-quick-update-no-20/",
+  },
+  {
     title: "Eth2 quick update no. 19",
     description: "4 November 2020",
     link: "https://blog.ethereum.org/2020/11/04/eth2-quick-update-no-19/",
@@ -45,14 +50,15 @@ const dannyArticles = [
     description: "22 September 2020",
     link: "https://blog.ethereum.org/2020/09/22/eth2-quick-update-no-17/",
   },
-  {
-    title: "Eth2 quick update no. 16",
-    description: "14 September 2020",
-    link: "https://blog.ethereum.org/2020/09/14/eth2-quick-update-no-16/",
-  },
 ]
 
 const benArticles = [
+  {
+    title: "What’s New in Eth2 #56",
+    description: "13 November 2020",
+    link:
+      "https://hackmd.io/@benjaminion/eth2_news/https%3A%2F%2Fhackmd.io%2F%40benjaminion%2Fwnie2_201113",
+  },
   {
     title: "What’s New in Eth2 #55",
     description: "31 October 2020",
@@ -70,12 +76,6 @@ const benArticles = [
     description: "02 October 2020",
     link:
       "https://hackmd.io/@benjaminion/eth2_news/https%3A%2F%2Fhackmd.io%2F%40benjaminion%2Fwnie2_201002",
-  },
-  {
-    title: "What’s New in Eth2 #52",
-    description: "19 September 2020",
-    link:
-      "https://hackmd.io/@benjaminion/eth2_news/https%3A%2F%2Fhackmd.io%2F%40benjaminion%2Fwnie2_200919",
   },
 ]
 
