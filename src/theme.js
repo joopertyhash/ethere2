@@ -204,6 +204,9 @@ const lightColors = {
   warningLink: primaryDark700,
   warningLinkHover: primaryDark900,
   tagMint: mint,
+  infoBanner: primaryLight100,
+  infoLink: primaryLight800,
+  infoLinkHover: primaryLight900,
 }
 
 // TODO replace random variables w/ baseColor variables
@@ -268,6 +271,9 @@ const darkColors = {
   warningLink: primaryDark700,
   warningLinkHover: primaryDark900,
   tagMint: mint,
+  infoBanner: primaryLight100,
+  infoLink: primaryLight800,
+  infoLinkHover: primaryLight900,
   cardGradient:
     "linear-gradient(49.21deg, rgba(127, 127, 213, 0.2) 19.87%, rgba(134, 168, 231, 0.2) 58.46%, rgba(145, 234, 228, 0.2) 97.05% )",
 }
