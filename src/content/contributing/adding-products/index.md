@@ -36,7 +36,7 @@ Here's our decision framework in more detail. Feel free to provide feedback or s
 
 ### Criteria for inclusion: the must-haves {#criteria-for-inclusion-the-must-haves}
 
-- **An audited product** – this reduces the risk to our users and shows us that you take security seriously.
+- **A security-tested product** – whether through audit, an internal security team or some other method, your product's security must be reliably tested. This reduces the risk to our users and shows us that you take security seriously.
 - **A product** **that has been "live" for over 6 months** – this is another indication of security. 6 months is a good timeframe for critical bugs and exploitations to have been found.
 - **Worked on by an active team** – this helps ensure quality and that a user will get support with their queries.
 
@@ -100,4 +100,4 @@ _We're also investigating options for voting so the community can indicate their
 
 If you want to add a wallet or dapp to ethereum.org and it meets the criteria, create an issue on GitHub.
 
-<Button to="https://github.com/ethereum/ethereum-org-website/issues/new?assignees=&labels=Type%3A+Feature&template=feature_request.md&title=">Create an issue</Button>
+<ButtonLink to="https://github.com/ethereum/ethereum-org-website/issues/new?assignees=&labels=Type%3A+Feature&template=feature_request.md&title=">Create an issue</ButtonLink>

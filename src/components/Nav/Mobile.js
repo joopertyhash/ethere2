@@ -2,12 +2,13 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { useIntl } from "gatsby-plugin-intl"
 import { motion } from "framer-motion"
-import { Twemoji } from "react-emoji-render"
 
 import Translation from "../Translation"
 import Icon from "../Icon"
 import Link from "../Link"
 import Search from "../Search"
+import Emoji from "../Emoji"
+import { NavLink } from "../../components/SharedStyledComponents"
 
 const MobileModal = styled(motion.div)`
   position: fixed;
@@ -66,8 +67,8 @@ const CloseIconContainer = styled.span`
   z-index: 102;
   position: absolute;
   cursor: pointer;
-  top: 1rem;
-  right: 1rem;
+  top: 1.5rem;
+  right: 1.5rem;
 
   & > svg {
     fill: ${(props) => props.theme.colors.text};
@@ -89,6 +90,12 @@ const NavListItem = styled.li`
   list-style-image: none;
 `
 
+const StyledNavLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+`
+
 const SectionTitle = styled.div`
   margin: 1rem 0;
   color: ${(props) => props.theme.colors.text};
@@ -100,21 +107,11 @@ const SectionItems = styled.ul`
 
 const SectionItem = styled.li`
   margin: 0;
-  margin-bottom: 1rem;
   list-style-type: none;
   list-style-image: none;
   opacity: 0.7;
   &:hover {
     opacity: 1;
-  }
-`
-
-const NavLink = styled(Link)`
-  text-decoration: none;
-  margin-right: 2rem;
-  color: ${(props) => props.theme.colors.text};
-  &:hover {
-    color: ${(props) => props.theme.colors.primary};
   }
 `
 
@@ -188,7 +185,7 @@ const MenuIcon = styled(Icon)`
 `
 
 const ChevronLeftIcon = styled(Icon)`
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 `
 
 const BlankSearchState = styled.div`
@@ -205,14 +202,6 @@ const BlankSearchState = styled.div`
   height: 280px;
   height: min(60vw, 280px);
   border-radius: 100%;
-`
-
-const Emoji = styled(Twemoji)`
-  & > img {
-    width: 3em !important;
-    height: 3em !important;
-    margin-bottom: 0 !important;
-  }
 `
 
 const MobileNavMenu = ({
@@ -236,6 +225,7 @@ const MobileNavMenu = ({
         animate={isOpen ? "open" : "closed"}
         variants={mobileModalVariants}
         initial="closed"
+        onClick={handleClose}
       ></MobileModal>
       <MenuContainer
         animate={isOpen ? "open" : "closed"}
@@ -262,14 +252,15 @@ const MobileNavMenu = ({
                         .filter((item) => item.shouldDisplay)
                         .map((item, idx) => {
                           return (
-                            <SectionItem onClick={toggleMenu} key={idx}>
-                              <NavLink
-                                to={item.to}
-                                isPartiallyActive={item.isPartiallyActive}
-                              >
+                            <StyledNavLink
+                              to={item.to}
+                              isPartiallyActive={item.isPartiallyActive}
+                              key={idx}
+                            >
+                              <SectionItem onClick={toggleMenu}>
                                 <Translation id={item.text} />
-                              </NavLink>
-                            </SectionItem>
+                              </SectionItem>
+                            </StyledNavLink>
                           )
                         })}
                     </SectionItems>
@@ -316,12 +307,12 @@ const MobileNavMenu = ({
           initial="closed"
         >
           <SearchHeader onClick={() => setIsSearchOpen(false)}>
-            <ChevronLeftIcon name="chevronRight" />
+            <ChevronLeftIcon name="chevronDown" />
             <Translation id="search" />
           </SearchHeader>
           <Search handleSearchSelect={handleClose} />
           <BlankSearchState>
-            <Emoji svg text=":sailboat:" />
+            <Emoji text=":sailboat:" size={3} />
             <Translation id="search-box-blank-state-text" />
           </BlankSearchState>
         </SearchContainer>

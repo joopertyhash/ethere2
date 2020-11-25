@@ -1,23 +1,15 @@
 import React from "react"
 import styled from "styled-components"
-import { Twemoji } from "react-emoji-render"
+import Emoji from "./Emoji"
 
 const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: ${(props) => props.theme.colors.searchBackground};
-  border-radius: 4px;
+  background: ${(props) => props.theme.colors.ednBackground};
+  border-radius: 2px;
   border: 1px solid ${(props) => props.theme.colors.lightBorder};
   padding: 1.5rem;
-`
-
-const Emoji = styled(Twemoji)`
-  & > img {
-    width: 3em !important;
-    height: 3em !important;
-    margin-bottom: 1em !important;
-  }
 `
 
 const Description = styled.p`
@@ -30,7 +22,7 @@ const Card = ({ emoji, title, description, children, className }) => {
   return (
     <StyledCard className={className}>
       <TopContent>
-        <Emoji svg text={emoji} />
+        {emoji && <Emoji size={3} text={emoji} />}
         <h3>{title}</h3>
         <Description>{description}</Description>
       </TopContent>

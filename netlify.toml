@@ -255,6 +255,23 @@
 [[redirects]]
   from = "/en/delphi/"
   to = "/en/developers/docs/programming-languages/delphi/"
+[[redirects]]
+  from = "/en/developers/docs/mining/"
+  to = "/en/developers/docs/consensus-mechanisms/pow/mining/"
+
+# Eth2 updates
+[[redirects]]
+  from = "/en/eth2/the-beacon-chain/"
+  to = "/en/eth2/beacon-chain/"
+
+# English fallback redirect
+# If no page exists at /request-url, redirect to /en/request-url
+# WARNING: this causes the development environment to fail when running `netlify dev`
+# https://github.com/netlify/cli/issues/1299
+# [[redirects]]
+#   from = "/*"
+#   to = "/en/:splat"
+#   force = false
 
 # A redirect rule with all the supported properties
 # [[redirects]]

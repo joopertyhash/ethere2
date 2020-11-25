@@ -2,15 +2,15 @@ import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import { useIntl } from "gatsby-plugin-intl"
-import { Twemoji } from "react-emoji-render"
 
 import PageMetadata from "../components/PageMetadata"
 import Translation from "../components/Translation"
-import Button from "../components/Button"
+import ButtonLink from "../components/ButtonLink"
 import Link from "../components/Link"
-import { Mixins } from "../components/Theme"
+import { Mixins } from "../theme"
 import ActionCard from "../components/ActionCard"
 import { Divider } from "../components/SharedStyledComponents"
+import Emoji from "../components/Emoji"
 
 import studioGif from "../assets/ethereum-studio.gif"
 
@@ -127,16 +127,9 @@ const CardLink = styled.div`
   margin-top: auto;
 `
 
-const Emoji = styled(Twemoji)`
-  & > img {
-    width: 3em !important;
-    height: 3em !important;
-    margin-bottom: 0 !important;
-  }
-`
 const TemplateCard = ({ template }) => (
   <Card>
-    <Emoji svg text={template.icon} />
+    <Emoji text={template.icon} size={3} />
     <div>
       <CardTitle>
         <Translation id={template.title} />
@@ -263,9 +256,9 @@ const BuildPage = ({ data }) => {
         <Subtitle>
           <Translation id="page-build-subtitle" />
         </Subtitle>
-        <Button to="https://studio.ethereum.org">
+        <ButtonLink to="https://studio.ethereum.org">
           <Translation id="page-build-try-button" />
-        </Button>
+        </ButtonLink>
         <Gif src={studioGif} loading="eager" alt="Ethereum Studio preview" />
         <Caption>
           <Translation id="page-build-powered-by" />{" "}
@@ -309,9 +302,9 @@ const BuildPage = ({ data }) => {
         <LearnSubtitle>
           <Translation id="page-build-learn-more-description" />
         </LearnSubtitle>
-        <Button isSecondary={true} to="/learn/">
+        <ButtonLink isSecondary={true} to="/learn/">
           <Translation id="learn-more" />
-        </Button>
+        </ButtonLink>
       </LearnSection>
       <p>
         <Translation id="page-build-collaboration" />

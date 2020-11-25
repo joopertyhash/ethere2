@@ -4,9 +4,8 @@ import { useIntl } from "gatsby-plugin-intl"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from "styled-components"
-import { Twemoji } from "react-emoji-render"
 
-import Button from "../components/Button"
+import ButtonLink from "../components/ButtonLink"
 import Breadcrumbs from "../components/Breadcrumbs"
 import Card from "../components/Card"
 import Contributors from "../components/Contributors"
@@ -20,12 +19,14 @@ import MeetupList from "../components/MeetupList"
 import PageMetadata from "../components/PageMetadata"
 import Pill from "../components/Pill"
 import RandomAppList from "../components/RandomAppList"
+import ExpandableCard from "../components/ExpandableCard"
 import Roadmap from "../components/Roadmap"
 import TableOfContents from "../components/TableOfContents"
 import Translation from "../components/Translation"
 import TranslationsInProgress from "../components/TranslationsInProgress"
 import Warning from "../components/Warning"
 import SectionNav from "../components/SectionNav"
+import DocLink from "../components/DocLink"
 import { getLocaleTimestamp } from "../utils/time"
 import { isLangRightToLeft } from "../utils/translations"
 import {
@@ -36,17 +37,20 @@ import {
   Header3,
   Header4,
   H5,
+  ListItem,
+  CardContainer,
 } from "../components/SharedStyledComponents"
+import Emoji from "../components/Emoji"
 
 const Page = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: 4rem auto 0;
+  margin: 0 auto 4rem;
   padding: 2rem;
 
   @media (min-width: ${(props) => props.theme.breakpoints.l}) {
-    padding-top: 6rem;
+    padding-top: 4rem;
   }
 `
 
@@ -81,6 +85,11 @@ const Pre = styled.pre`
   white-space: pre-wrap;
 `
 
+const MobileTableOfContents = styled(TableOfContents)`
+  position: relative;
+  z-index: 2;
+`
+
 // Passing components to MDXProvider allows use across all .md/.mdx files
 // https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/#mdxprovider
 const components = {
@@ -91,13 +100,14 @@ const components = {
   h4: Header4,
   h5: H5,
   p: Paragraph,
+  li: ListItem,
   pre: Pre,
   table: MarkdownTable,
   MeetupList,
   RandomAppList,
   Roadmap,
   Logo,
-  Button,
+  ButtonLink,
   Contributors,
   InfoBanner,
   Warning,
@@ -107,8 +117,11 @@ const components = {
   Divider,
   SectionNav,
   Pill,
-  Twemoji,
   TranslationsInProgress,
+  Emoji,
+  DocLink,
+  ExpandableCard,
+  CardContainer,
 }
 
 const StaticPage = ({ data: { mdx } }) => {
@@ -133,6 +146,11 @@ const StaticPage = ({ data: { mdx } }) => {
           <Translation id="page-last-updated" />:{" "}
           {getLocaleTimestamp(intl.locale, lastUpdatedDate)}
         </LastUpdated>
+        <MobileTableOfContents
+          items={tocItems}
+          maxDepth={mdx.frontmatter.sidebarDepth}
+          isMobile={true}
+        />
         <MDXProvider components={components}>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </MDXProvider>

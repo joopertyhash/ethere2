@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useIntl } from "gatsby-plugin-intl"
 import styled from "styled-components"
-import { Twemoji } from "react-emoji-render"
 
-import Translation from "../components/Translation"
-import Button from "./Button"
-import Tag from "./Tag"
-import SelectableCard from "./SelectableCard"
-import WalletCard from "./WalletCard"
-import { Content, CardContainer } from "./SharedStyledComponents"
+import ButtonLink from "./ButtonLink"
+import Emoji from "./Emoji"
 import Link from "./Link"
+import SelectableCard from "./SelectableCard"
+import Translation from "../components/Translation"
+import Tag from "./Tag"
+import WalletCard from "./WalletCard"
+import { Content } from "./SharedStyledComponents"
 
 import { getLocaleTimestamp } from "../utils/time"
 import { trackCustomEvent } from "../utils/matomo"
@@ -41,18 +41,10 @@ const GradientContainer = styled.div`
   border-bottom: 1px solid ${(props) => props.theme.colors.tableItemBoxShadow};
 `
 
-const FeatureCard = styled(SelectableCard)`
-  margin: 1rem;
-  padding: 1.5rem;
-  flex: 1 0 30%;
-  min-width: 280px;
-  max-width: 30%;
-  @media (max-width: ${(props) => props.theme.breakpoints.l}) {
-    max-width: 46%;
-  }
-  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
-    max-width: 100%;
-  }
+const WalletFeaturesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
 `
 
 const FilterContainer = styled.div`
@@ -103,13 +95,10 @@ const ResultsContainer = styled.div`
   text-align: center;
 `
 
-const Emoji = styled(Twemoji)`
-  & > img {
-    width: 3em !important;
-    height: 3em !important;
-    margin-bottom: 2em !important;
-    margin-top: 2em !important;
-  }
+const ResultsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 `
 
 const Disclaimer = styled.div`
@@ -123,12 +112,6 @@ const walletFeatures = [
     emoji: ":credit_card:",
     title: <Translation id="page-find-wallet-buy-card" />,
     description: <Translation id="page-find-wallet-buy-card-desc" />,
-  },
-  {
-    id: "has_no_tx_fees",
-    emoji: ":fuel_pump:",
-    title: <Translation id="page-find-wallet-no-fees" />,
-    description: <Translation id="page-find-wallet-no-fees-desc" />,
   },
   {
     id: "has_explore_dapps",
@@ -192,7 +175,6 @@ const WalletCompare = () => {
           has_web
           has_hardware
           has_card_deposits
-          has_no_tx_fees
           has_explore_dapps
           has_defi_integrations
           has_bank_withdrawals
@@ -222,16 +204,7 @@ const WalletCompare = () => {
       argent: file(relativePath: { eq: "wallets/argent.png" }) {
         ...walletCardImage
       }
-      atomic: file(relativePath: { eq: "wallets/atomic.png" }) {
-        ...walletCardImage
-      }
       authereum: file(relativePath: { eq: "wallets/authereum.png" }) {
-        ...walletCardImage
-      }
-      bitski: file(relativePath: { eq: "wallets/bitski.png" }) {
-        ...walletCardImage
-      }
-      blockchain: file(relativePath: { eq: "wallets/blockchain.png" }) {
         ...walletCardImage
       }
       coinbase: file(relativePath: { eq: "wallets/coinbase.png" }) {
@@ -240,13 +213,7 @@ const WalletCompare = () => {
       dharma: file(relativePath: { eq: "wallets/dharma.png" }) {
         ...walletCardImage
       }
-      eidoo: file(relativePath: { eq: "wallets/eidoo.png" }) {
-        ...walletCardImage
-      }
       enjin: file(relativePath: { eq: "wallets/enjin.png" }) {
-        ...walletCardImage
-      }
-      eql: file(relativePath: { eq: "wallets/eql.png" }) {
         ...walletCardImage
       }
       gnosis: file(relativePath: { eq: "wallets/gnosis.png" }) {
@@ -256,9 +223,6 @@ const WalletCompare = () => {
         ...walletCardImage
       }
       ledger: file(relativePath: { eq: "wallets/ledger.png" }) {
-        ...walletCardImage
-      }
-      lumi: file(relativePath: { eq: "wallets/lumi.png" }) {
         ...walletCardImage
       }
       metamask: file(relativePath: { eq: "wallets/metamask.png" }) {
@@ -374,11 +338,11 @@ const WalletCompare = () => {
         <h2>
           <Translation id="page-find-wallet-feature-h2" />
         </h2>
-        <CardContainer>
+        <WalletFeaturesGrid>
           {walletFeatures.map((card, idx) => {
             const isSelected = state.selectedFeatureIds.includes(card.id)
             return (
-              <FeatureCard
+              <SelectableCard
                 key={idx}
                 emoji={card.emoji}
                 title={card.title}
@@ -389,12 +353,12 @@ const WalletCompare = () => {
               />
             )
           })}
-        </CardContainer>
+        </WalletFeaturesGrid>
 
         <ButtonContainer id="results">
-          <Button to="/wallets/find-wallet/#results">
+          <ButtonLink to="/wallets/find-wallet/#results">
             <Translation id="page-find-wallet-search-btn" />
-          </Button>
+          </ButtonLink>
         </ButtonContainer>
       </Content>
 
@@ -451,7 +415,7 @@ const WalletCompare = () => {
         </FilterContainer>
         {filteredWallets.length === 0 && (
           <ResultsContainer>
-            <Emoji svg text=":crying_face:" />
+            <Emoji text=":crying_face:" size={3} mb={`2em`} mt={`2em`} />
             <h2>
               <Translation id="page-find-wallet-not-all-features" />{" "}
               <b>
@@ -464,11 +428,11 @@ const WalletCompare = () => {
           </ResultsContainer>
         )}
         <ResultsContainer>
-          <CardContainer>
+          <ResultsGrid>
             {filteredWallets.map((wallet) => {
               return <WalletCard wallet={wallet} key={wallet.id} />
             })}
-          </CardContainer>
+          </ResultsGrid>
         </ResultsContainer>
         <Disclaimer>
           <p>

@@ -8,12 +8,12 @@ import Callout from "../../components/Callout"
 import CalloutBanner from "../../components/CalloutBanner"
 import Link from "../../components/Link"
 
-import Button from "../../components/Button"
+import ButtonLink from "../../components/ButtonLink"
 import PageMetadata from "../../components/PageMetadata"
 import {
   CardContainer,
   Content,
-  EdnPage,
+  Page,
   GrayContainer,
 } from "../../components/SharedStyledComponents"
 
@@ -221,7 +221,7 @@ const paths = [
 
 const DevelopersPage = ({ data }) => {
   return (
-    <EdnPage>
+    <Page>
       <PageMetadata
         title="Ethereum Developer Resources"
         description="Documentation, tutorials, and tools for developers building on Ethereum."
@@ -255,7 +255,7 @@ const DevelopersPage = ({ data }) => {
                 title={path.title}
                 description={path.description}
               >
-                <Button to={path.url}>{path.button}</Button>
+                <ButtonLink to={path.url}>{path.button}</ButtonLink>
               </StyledCard>
             )
           })}
@@ -288,9 +288,9 @@ const DevelopersPage = ({ data }) => {
             description="Like ethereum.org, these docs are a community effort. Create a PR if you see mistakes, room for improvement, or new opportunties to help Ethereum developers."
           >
             <div>
-              <Button to="https://github.com/ethereum/ethereum-org-website">
+              <ButtonLink to="https://github.com/ethereum/ethereum-org-website">
                 Contribute
-              </Button>
+              </ButtonLink>
             </div>
           </StyledCallout>
         </TwoColumnContent>
@@ -354,7 +354,9 @@ const DevelopersPage = ({ data }) => {
             <Link to="/developers/docs/networks/">Networks</Link>
             <p>An overview of mainnet and the test networks</p>
 
-            <Link to="/developers/docs/mining/">Mining</Link>
+            <Link to="/developers/docs/consensus-mechanisms/pow/mining/">
+              Mining
+            </Link>
             <p>How new blocks are created and consensus is reached</p>
           </Column>
           <RightColumn>
@@ -396,7 +398,7 @@ const DevelopersPage = ({ data }) => {
             <Link to="/developers/docs/oracles/">Oracles</Link>
             <p>Getting off-chain data into your smart contracts</p>
 
-            <Link to="/developers/docs/scaling/">Scaling</Link>
+            <Link to="/developers/docs/layer-2-scaling/">Scaling</Link>
             <p>Solutions for faster transactions</p>
           </RightColumn>
         </ThreeColumnContent>
@@ -406,11 +408,13 @@ const DevelopersPage = ({ data }) => {
           description="We're listing the best tutorials from throughout the developer community. Learn Ethereum development step-by-step from builders who have already done it."
         >
           <div>
-            <Button to="/en/developers/tutorials/">Browse tutorials</Button>
+            <ButtonLink to="/en/developers/tutorials/">
+              Browse tutorials
+            </ButtonLink>
           </div>
         </CalloutBanner>
       </GrayContainer>
-    </EdnPage>
+    </Page>
   )
 }
 export default DevelopersPage

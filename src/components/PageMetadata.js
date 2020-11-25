@@ -9,8 +9,14 @@ import { getDefaultMessage, languageMetadata } from "../utils/translations"
 
 const supportedLanguages = Object.keys(languageMetadata)
 
-const PageMetadata = ({ description, meta, title, image }) => {
-  const { site, ogImageDefault, ogImageDevelopers } = useStaticQuery(
+const PageMetadata = ({ description, meta, title, image, canonicalUrl }) => {
+  const {
+    site,
+    ogImageDefault,
+    ogImageDevelopers,
+    ogImageDapps,
+    ogImageEthtwo,
+  } = useStaticQuery(
     graphql`
       query {
         site {
@@ -27,6 +33,20 @@ const PageMetadata = ({ description, meta, title, image }) => {
           }
         }
         ogImageDevelopers: file(relativePath: { eq: "enterprise-eth.png" }) {
+          childImageSharp {
+            fixed(width: 1200) {
+              src
+            }
+          }
+        }
+        ogImageDapps: file(relativePath: { eq: "doge-computer.png" }) {
+          childImageSharp {
+            fixed(width: 1200) {
+              src
+            }
+          }
+        }
+        ogImageEthtwo: file(relativePath: { eq: "eth2/eth2_doge.png" }) {
           childImageSharp {
             fixed(width: 1200) {
               src
@@ -64,7 +84,8 @@ const PageMetadata = ({ description, meta, title, image }) => {
         if (!supportedLanguages.includes(firstDirectory)) {
           canonicalPath = `/en${pathname}`
         }
-        const canonical = `${site.siteMetadata.url}${canonicalPath}`
+        const canonical =
+          canonicalUrl || `${site.siteMetadata.url}${canonicalPath}`
 
         {
           /* Set fallback ogImage based on path */
@@ -73,6 +94,12 @@ const PageMetadata = ({ description, meta, title, image }) => {
         let ogImage = ogImageDefault.childImageSharp.fixed.src
         if (pathname.includes("/developers/")) {
           ogImage = ogImageDevelopers.childImageSharp.fixed.src
+        }
+        if (pathname.includes("/dapps/")) {
+          ogImage = ogImageDapps.childImageSharp.fixed.src
+        }
+        if (pathname.includes("/eth2/")) {
+          ogImage = ogImageEthtwo.childImageSharp.fixed.src
         }
         if (image) {
           ogImage = image

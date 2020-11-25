@@ -7,12 +7,17 @@ const InfoContainer = styled.div`
   width: 100%;
   max-width: 876px;
   color: ${(props) => props.theme.colors.black300};
-  padding: 16px 24px;
-  background: #ffe3d3;
-  border-radius: 4px;
-  border: #ff7324 1px solid;
+  padding: 1.5rem;
+  background: ${(props) => props.theme.colors.warning};
   display: flex;
-  margin-top: 2rem;
+  flex-direction: column;
+
+  a {
+    color: ${(props) => props.theme.colors.warningLink};
+    &:hover {
+      color: ${(props) => props.theme.colors.warningLinkHover};
+    }
+  }
 `
 
 const Emoji = styled(Twemoji)`
@@ -25,11 +30,13 @@ const Emoji = styled(Twemoji)`
   }
 `
 
-const Warning = ({ emoji, children }) => {
+const Content = styled.span``
+
+const Warning = ({ className, emoji, children }) => {
   return (
-    <InfoContainer>
+    <InfoContainer className={className}>
       {emoji && <Emoji svg text={emoji} />}
-      {children}
+      <Content>{children}</Content>
     </InfoContainer>
   )
 }

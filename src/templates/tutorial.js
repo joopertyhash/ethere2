@@ -4,9 +4,8 @@ import { useIntl } from "gatsby-plugin-intl"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from "styled-components"
-import { Twemoji } from "react-emoji-render"
 
-import Button from "../components/Button"
+import ButtonLink from "../components/ButtonLink"
 import Card from "../components/Card"
 import Codeblock from "../components/Codeblock"
 import TutorialMetadata from "../components/TutorialMetadata"
@@ -29,24 +28,23 @@ import {
   Header3,
   Header4,
   H5,
+  ListItem,
 } from "../components/SharedStyledComponents"
+import Emoji from "../components/Emoji"
 
 const Page = styled.div`
   display: flex;
-  background: ${(props) => props.theme.colors.ednBackground};
   width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem 0 0;
+  background: ${(props) => props.theme.colors.ednBackground};
   border-bottom: 1px solid ${(props) => props.theme.colors.border};
-  margin: 134px auto 0; /* TODO better way to adjust for nav? */
+  background-color: ${(props) => props.theme.colors.ednBackground};
   @media (max-width: ${(props) => props.theme.breakpoints.l}) {
     margin: 2rem 0rem;
+    padding: 0;
     background: ${(props) => props.theme.colors.background};
-    width: 100%;
-    padding: 0 0 0 0;
   }
-
-  /* Unique to EDN */
-  padding: 0 2rem 0 0;
-  background-color: ${(props) => props.theme.colors.ednBackground};
 `
 
 const DesktopTableOfContents = styled(TableOfContents)`
@@ -140,17 +138,18 @@ const components = {
   h4: H4,
   h5: H5,
   p: Paragraph,
+  li: ListItem,
   pre: Codeblock,
   table: MarkdownTable,
-  Button,
+  ButtonLink,
   InfoBanner,
   Warning,
   Card,
   Divider,
   SectionNav,
   Pill,
-  Twemoji,
   CallToContribute,
+  Emoji,
 }
 
 const Contributors = styled(FileContributors)`
@@ -178,6 +177,7 @@ const TutorialPage = ({ data, pageContext }) => {
       <PageMetadata
         title={pageData.frontmatter.title}
         description={pageData.frontmatter.description}
+        canonicalUrl={pageData.frontmatter.sourceUrl}
       />
       <ContentContainer>
         <H1>{pageData.frontmatter.title}</H1>

@@ -96,10 +96,10 @@ Ethereum verfügt über eine große und wachsende Anzahl von Tools, um Programmi
 - [grid.ethereum.org](https://grid.ethereum.org)
 - [GitHub](https://github.com/ethereum/grid)
 
-**Buidler -** **_Ein Task-Runner für Ethereum Smart Contract-Entwickler._**
+**Hardhat -** **_Ein Task-Runner für Ethereum Smart Contract-Entwickler._**
 
-- [buidler.dev](https://buidler.dev)
-- [GitHub](https://github.com/nomiclabs/buidler)
+- [hardhat.org](https://hardhat.org)
+- [GitHub](https://github.com/nomiclabs/hardhat)
 
 **OpenZeppelin SDK -** **_Das Ultimative Smart Contract Toolkit: Eine Reihe von Tools, die dir helfen, zu entwickeln, kompilieren, aktualisieren, verteilen und mit Smart Contracts zu interagieren._**
 
@@ -217,7 +217,7 @@ Ethereum verfügt über eine große und wachsende Anzahl von Tools, um Programmi
 
 - [cloudflare-eth.com](https://cloudflare-eth.com)
 
-**Nodesmith -** **_JSON-RPC API Zugriff auf das Ethereum Mainnet und Testnetzwerke._**
+**Nodesmith -** **_JSON-RPC API Zugriff auf das Ethereum mainnet und Testnetzwerke._**
 
 - [nodesmith.io](https://nodesmith.io/network/ethereum/)
 - [Dokumentation](https://nodesmith.io/docs/#/ethereum/apiRef)

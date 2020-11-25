@@ -18,7 +18,10 @@ You should understand the concept of a decentralized network before diving deepe
 
 You can see a real-time view of the Ethereum network by looking at this [map of nodes](https://etherscan.io/nodetracker).
 
-Many [implementations of Ethereum clients](/developers/docs/nodes-and-clients/#clients) exist in a variety of languages. What these client implementations have in common is they all follow a formal specification. This specification dictates how the Ethereum network and blockchain functions.
+Many [implementations of Ethereum clients](/developers/docs/nodes-and-clients/#clients) exist in a variety of languages. What these client implementations have in common is they all follow a formal specification. This specification dictates how the Ethereum network and blockchain functions. 
+
+![Eth1x client](./client-diagram.png)
+Simplified diagram of what Ethereum client features.
 
 ## Node types {#node-types}
 
@@ -71,7 +74,7 @@ If you run a full node, the whole Ethereum network benefits from it.
 
 ### Projects {#projects}
 
-[**Select a client and follow their instructions**](/developers/docs/nodes-and-clients/#clients)
+[**Select a client and follow their instructions**](#clients)
 
 **Ethereum Grid -** **_A desktop application for downloading, configuring, and running Ethereum clients and tools._**
 
@@ -82,14 +85,20 @@ If you run a full node, the whole Ethereum network benefits from it.
 
 - [GitHub](https://github.com/vrde/ethnode)
 
+**DAppNode -** **_An operating system for running Web3 nodes, including Ethereum, on a dedicated machine._**
+
+- [dappnode.io](https://dappnode.io)
+
 ### Resources {#resources}
 
 - [Running Ethereum Full Nodes: A Complete Guide](https://medium.com/coinmonks/running-ethereum-full-nodes-a-guide-for-the-barely-motivated-a8a13e7a0d31) _Nov 7, 2019 - Justin Leroux_
 - [Node Configuration Cheat Sheet](https://dev.to/5chdn/ethereum-node-configuration-modes-cheat-sheet-25l8) _Jan 5, 2019 - Afri Schoeden_
+- [How To Install & Run a Geth Node](https://www.quiknode.io/guides/infrastructure/how-to-install-and-run-a-geth-node) _Oct 4, 2020 - Sahil Sen_
+- [How To Install & Run a OpenEthereum (fka. Parity) Node](https://www.quiknode.io/guides/infrastructure/how-to-run-a-openethereum-ex-parity-client-node) _Sept 22, 2020 - Sahil Sen_
 
 ## Alternatives {#alternatives}
 
-Running own node can be difficult and you don’t always need to run your own instance. In this case, you can use a third party API provider like [Infura](https://infura.io) or [Alchemy](https://alchemyapi.io). Alternatively [ArchiveNode](https://archivenode.io/) is a community-funded Archive node that hopes to bring archive data on the Ethereum blockchain to small time developers who otherwise couldn't afford it.
+Running your own node can be difficult and you don’t always need to run your own instance. In this case, you can use a third party API provider like [Infura](https://infura.io), [Alchemy](https://alchemyapi.io), or [QuikNode](https://www.quiknode.io). Alternatively [ArchiveNode](https://archivenode.io/) is a community-funded Archive node that hopes to bring archive data on the Ethereum blockchain to independent developers who otherwise couldn't afford it.
 
 If somebody runs an Ethereum node with a public API in your community, you can point your light wallets (like MetaMask) to a community node [via Custom RPC](https://metamask.zendesk.com/hc/en-us/articles/360015290012-Using-a-Local-Node) and gain more privacy than with some random tusted third party.
 
@@ -205,6 +214,13 @@ These charts show how storage requirements are always changing. For the most up-
 The most convenient and cheap way of running Ethereum node is to use a single board computer with ARM architecture like Raspberry Pi. [Ethereum on ARM](https://twitter.com/EthereumOnARM) provides images of Geth, Parity, Nethermind, and Besu clients. Here's a simple tutorial on [how to build and setup an ARM client](/en/developers/tutorials/run-node-raspberry-pi/).
 
 Small, affordable and efficient devices like these are ideal for running a node at home.
+
+
+## Eth2 clients {#eth2-clients}
+
+There are new clients to support the [Eth2 upgrades](/eth2/beacon-chain/). They will run the Beacon Chain and support the new [proof-of-stake](/developers/docs/consensus-mechanisms/pos/) consensus mechanism. 
+
+[View Eth2 clients](/eth2/get-involved/#clients).
 
 ## Further reading {#further-reading}
 

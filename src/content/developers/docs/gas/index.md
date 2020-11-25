@@ -18,7 +18,7 @@ Gas refers to the unit that measures the amount of computational effort required
 
 Since each Ethereum transaction requires computational resources to execute, each transaction requires a fee. Gas refers to the fee required to successfully conduct a transaction on Ethereum.
 
-In essence, gas fees are paid in Ethereum's native currency, Ether (ETH). Gas prices are denoted in Gwei, which itself is a denomination of ETH - each Gwei is equal to 0.000000001 ETH. For example, instead of saying that your gas costs 0.000000001 Ether, you can say your gas costs 1 Gwei.
+In essence, gas fees are paid in Ethereum's native currency, ether (ETH). Gas prices are denoted in Gwei, which itself is a denomination of ETH - each Gwei is equal to 0.000000001 ETH. For example, instead of saying that your gas costs 0.000000001 Ether, you can say your gas costs 1 Gwei.
 
 This video offers a concise overview of gas and why it exists:
 
@@ -31,12 +31,14 @@ In short, gas fees help keep the Ethereum network secure. By requiring a fee for
 ## Further Reading {#further-reading}
 
 - [Understanding Ethereum Gas, Blocks and the Fee Market](https://medium.com/@eric.conner/understanding-ethereum-gas-blocks-and-the-fee-market-d5e268bf0a0e)
+- [Ethereum Gas Explained](https://defiprime.com/gas)
 
 ## Related Tools {#related-tools}
 
 - [ETH Gas Station](https://ethgasstation.info/) _Consumer oriented metrics for the Ethereum gas market_
+- [Etherscan Gas Tracker](https://etherscan.io/gastracker) _Transaction gas price estimator_
 - [Bloxy Gas Analytics](https://stat.bloxy.info/superset/dashboard/gas/?standalone=true) _Ethereum network gas stats_
 
 ## Related Topics {#related-topics}
 
-- [Mining](/en/developers/docs/mining/)
+- [Mining](/en/developers/docs/consensus-mechanisms/pow/mining/)

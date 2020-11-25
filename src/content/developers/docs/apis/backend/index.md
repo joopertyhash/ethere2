@@ -23,11 +23,12 @@ These libraries abstract away much of the complexity of interacting directly wit
 
 <!-- TODO seperate APIs-as-a-service vs. connect your own -->
 
-**Alchemy -** **_Ethereum API and developer tools._**
+**Alchemy -** **_Ethereum Development Platform._**
 
 - [alchemyapi.io](https://alchemyapi.io)
 - [Documentation](https://docs.alchemyapi.io/)
 - [GitHub](https://github.com/alchemyplatform)
+- [Discord](https://discord.gg/kwqVnrA)
 
 **Infura -** **_The Ethereum API as a service._**
 
@@ -68,6 +69,18 @@ These libraries abstract away much of the complexity of interacting directly wit
 - [GitHub](https://github.com/web3j/web3j)
 - [Docs](https://docs.web3j.io/)
 - [Gitter](https://gitter.im/web3j/web3j)
+
+**Rivet -** **_Ethereum and Ethereum Classic APIs as a service powered by open source software._**
+
+- [rivet.cloud](https://rivet.cloud)
+- [Documentation](https://rivet.cloud/docs/)
+- [GitHub](https://github.com/openrelayxyz/ethercattle-deployment)
+
+**Nethereum -** **_An open source .NET integration library for blockchain._**
+
+- [GitHub](https://github.com/Nethereum/Nethereum)
+- [Documentation](http://docs.nethereum.com/en/latest/)
+- [Discord](https://discord.com/invite/jQPrR58FxX)
 
 ## Further reading {#further-reading}
 

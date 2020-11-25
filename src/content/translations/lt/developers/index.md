@@ -70,10 +70,10 @@ Ethereum rasite vis daugiau įrankių, kuriuos naudodami galėsite kurti, testuo
 - [Dokumentai](https://etherlime.readthedocs.io/en/latest/)
 - [GitHub](https://github.com/LimeChain/etherlime)
 
-### Buidler – _užduočių valdyklė Ethereum išmaniųjų sutarčių kūrėjams_
+### Hardhat – _užduočių valdyklė Ethereum išmaniųjų sutarčių kūrėjams_
 
-- [buidler.dev](https://buidler.dev)
-- [GitHub](https://github.com/nomiclabs/buidler)
+- [hardhat.org](https://hardhat.org)
+- [GitHub](https://github.com/nomiclabs/hardhat)
 
 ### OpenZeppelin SDK – _didžiausias išmaniųjų sutarčių programuotojo paketas: įrankių komplektas, skirtas kurti, kaupti, gerinti, diegti ir sąveikauti su išmaniosiomis sutartimis._
 
@@ -252,16 +252,16 @@ Ethereum bendruomenė prižiūri keletą bandomųjų tinklų. Kūrėjai juos nau
 
 ### Ropsten – _darbo įrodymo (proof of work) blokų grandinė, galima kasti bandomąjį Ether_
 
-- [Bandomojo Ether maišytuvas](https://faucet.ropsten.be/)
+- [Bandomojo ether maišytuvas](https://faucet.ropsten.be/)
 
 ### Rinkeby – _įgaliojimo įrodymo (proof of authority) blokų grandinė, kurią palaiko Geth kūrėjų komanda_
 
-- [Bandomojo Ether maišytuvas](https://faucet.rinkeby.io/)
+- [Bandomojo ether maišytuvas](https://faucet.rinkeby.io/)
 - [Universalus maišytuvas](https://faucets.blockxlabs.com)
 
 ### Goerli – _tarpklientinė įgaliojimo įrodymo (proof of authority) blokų grandinė, sukurta ir palaikoma Goerli bendruomenės_
 
-- [Bandomojo Ether maišytuvas](https://faucet.goerli.mudit.blog/)
+- [Bandomojo ether maišytuvas](https://faucet.goerli.mudit.blog/)
 - [goerli.net](https://goerli.net/)
 - [Universalus maišytuvas](https://faucets.blockxlabs.com)
 

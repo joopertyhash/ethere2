@@ -7,22 +7,27 @@ import { graphql } from "gatsby"
 // import Callout from "../../components/Callout"
 // import Card from "../../components/Card"
 // import Link from "../../components/Link"
-// import Button from "../../components/Button"
+// import ButtonLink from "../../components/ButtonLink"
 import PageMetadata from "../../components/PageMetadata"
+import ProductCard from "../../components/ProductCard"
 import {
   Content,
+  CardGrid,
   // Divider,
   // Intro,
-  EdnPage,
+  Page,
   // InfoBanner,
 } from "../../components/SharedStyledComponents"
-import ProductCard from "../../components/ProductCard"
+
+const StyledPage = styled(Page)`
+  margin-top: 4rem;
+`
 
 const HeroContent = styled(Content)`
-  margin: 2rem 0rem;
+  margin-bottom: 2rem;
   justify-content: center;
   @media (max-width: ${(props) => props.theme.breakpoints.xl}) {
-    padding: 1rem 2rem 2rem;
+    padding: 0 2rem 2rem;
   }
 `
 
@@ -109,12 +114,6 @@ const Hero = styled(Img)`
 //     margin-top: 0;
 //   }
 // `
-
-const CardContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: 2rem -1rem;
-`
 
 // const StyledCard = styled(Card)`
 //   flex: 1 1 30%;
@@ -264,12 +263,20 @@ const CardContainer = styled.div`
 
 const frameworksList = [
   {
-    id: "buidler",
-    url: "https://buidler.dev/",
-    background: "#2A2C32",
-    name: "Buidler",
+    id: "waffle",
+    url: "https://getwaffle.io/",
+    background: "#fff",
+    name: "Waffle",
     description:
-      "Buidler is a task runner for Ethereum smart contract developers.",
+      "The most advanced testing lib for smart contracts. Use alone or with Scafold-eth or Hardhat.",
+  },
+  {
+    id: "hardhat",
+    url: "https://hardhat.org/",
+    background: "#2A2C32",
+    name: "Hardhat",
+    description:
+      "Hardhat is an Ethereum development environment for professionals.",
   },
   {
     id: "truffle",
@@ -309,7 +316,7 @@ const frameworksList = [
     background: "#fff",
     name: "Epirus",
     description:
-      "A platform for developing, deploying and monitoring blockchain applications on the Javascript Virtual Machine",
+      "A platform for developing, deploying and monitoring blockchain applications on the Java Virtual Machine",
   },
   {
     id: "createethapp",
@@ -325,7 +332,7 @@ const frameworksList = [
     background: "#fff",
     name: "scaffold-eth",
     description:
-      "Buidler + Create Eth App: everything you need to get started building decentralized applications powered by smart contracts",
+      "Hardhat + Create Eth App: everything you need to get started building decentralized applications powered by smart contracts",
   },
 ]
 
@@ -343,7 +350,7 @@ const ChooseStackPage = ({ data }) => {
   }, [data])
 
   return (
-    <EdnPage>
+    <StyledPage>
       <PageMetadata
         title="Ethereum local development setup"
         description="Guide on how to choose your software stack for Ethereum development."
@@ -363,7 +370,7 @@ const ChooseStackPage = ({ data }) => {
             loading="eager"
           /> */}
 
-        {/* <CardContainer>
+        {/* <CardGrid>
           <StyledCard
             emoji=":fast_forward:"
             title="Skip setup"
@@ -379,7 +386,7 @@ const ChooseStackPage = ({ data }) => {
             title="Learn about the stack"
             description="If you're not ready and want to brush up on your Ethereum knowledge, check out our docs."
           ></StyledCard>
-        </CardContainer> */}
+        </CardGrid> */}
       </HeroContent>
       <Content>
         <TwoColumnContent>
@@ -422,7 +429,7 @@ const ChooseStackPage = ({ data }) => {
             />
           </Column>
         </TwoColumnContent>
-        <CardContainer>
+        <CardGrid>
           {frameworks.map((framework, idx) => {
             return (
               <ProductCard
@@ -435,7 +442,7 @@ const ChooseStackPage = ({ data }) => {
               />
             )
           })}
-        </CardContainer>
+        </CardGrid>
       </Content>
       {/* <Content>
         <h2>Create your own stack</h2>
@@ -454,7 +461,7 @@ const ChooseStackPage = ({ data }) => {
           First, we recommend setting up a personal blockchain for local
           development, where you can run tests & kick the tires on your dapp.
         </p>
-        <CardContainer>
+        <CardGrid>
           {localblockchains.map((local, idx) => {
             return (
               <ProductCard
@@ -467,7 +474,7 @@ const ChooseStackPage = ({ data }) => {
               />
             )
           })}
-        </CardContainer>
+        </CardGrid>
       </StackContainer>
       <StackContainer>
         <Subtitle>Smart contract languages (Optional)</Subtitle>
@@ -480,7 +487,7 @@ const ChooseStackPage = ({ data }) => {
         <Link to="/en/developers/docs/smart-contracts/languages/">
           More on smart contract languages
         </Link>
-        <CardContainer>
+        <CardGrid>
           {contractLanguages.map((language, idx) => {
             return (
               <ProductCard
@@ -493,7 +500,7 @@ const ChooseStackPage = ({ data }) => {
               />
             )
           })}
-        </CardContainer>
+        </CardGrid>
       </StackContainer>
       <StackContainer>
         <Subtitle>Integrated Development Environments (IDEs)</Subtitle>
@@ -501,8 +508,8 @@ const ChooseStackPage = ({ data }) => {
           You need to write your smart contracts and code somewhere. Most
           established IDEs have plugins for Solidity / Vyper syntax support.{" "}
         </p>
-        <Link to="/en/developers/docs/IDEs/">More on IDEs</Link>
-        <CardContainer>
+        <Link to="/en/developers/docs/ides/">More on IDEs</Link>
+        <CardGrid>
           {ides.map((ide, idx) => {
             return (
               <ProductCard
@@ -515,7 +522,7 @@ const ChooseStackPage = ({ data }) => {
               />
             )
           })}
-        </CardContainer>
+        </CardGrid>
       </StackContainer>
       <StackContainer>
         <Subtitle>Smart contract testing libraries </Subtitle>
@@ -525,8 +532,8 @@ const ChooseStackPage = ({ data }) => {
           Ethereum developer frameworks come with smart contract testing out of
           the box
         </p>
-        <Link to="/en/developers/docs/IDEs/">More on IDEs</Link>
-        <CardContainer>
+        <Link to="/en/developers/docs/ides/">More on IDEs</Link>
+        <CardGrid>
           {testinglibraries.map((library, idx) => {
             return (
               <ProductCard
@@ -539,7 +546,7 @@ const ChooseStackPage = ({ data }) => {
               />
             )
           })}
-        </CardContainer>
+        </CardGrid>
       </StackContainer>
       <StackContainer>
         <Subtitle>Frontend JavaScript libraries</Subtitle>
@@ -547,7 +554,7 @@ const ChooseStackPage = ({ data }) => {
         <Link to="/en/developers/docs/apis/javascript/">
           More on Javascript libraries
         </Link>
-        <CardContainer>
+        <CardGrid>
           {jslibraries.map((jslibrary, idx) => {
             return (
               <ProductCard
@@ -560,9 +567,9 @@ const ChooseStackPage = ({ data }) => {
               />
             )
           })}
-        </CardContainer>
+        </CardGrid>
         </StackContainer> */}
-    </EdnPage>
+    </StyledPage>
   )
 }
 export default ChooseStackPage
@@ -593,7 +600,7 @@ export const query = graphql`
         }
       }
     }
-    buidler: file(relativePath: { eq: "devtools/buidler.png" }) {
+    hardhat: file(relativePath: { eq: "devtools/hardhat.png" }) {
       ...devtoolImage
     }
     truffle: file(relativePath: { eq: "devtools/truffle.png" }) {

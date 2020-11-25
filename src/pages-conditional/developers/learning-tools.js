@@ -1,16 +1,23 @@
 import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
-import { useIntl } from "gatsby-plugin-intl"
 
 import PageMetadata from "../../components/PageMetadata"
 import Translation from "../../components/Translation"
-import Button from "../../components/Button"
-import { Mixins } from "../../components/Theme"
+import ButtonLink from "../../components/ButtonLink"
 import ProductCard from "../../components/ProductCard"
-import { Content, EdnPage } from "../../components/SharedStyledComponents"
 import InfoBanner from "../../components/InfoBanner"
 import CalloutBanner from "../../components/CalloutBanner"
+import { Mixins } from "../../theme"
+import {
+  Content,
+  CardGrid,
+  Page,
+} from "../../components/SharedStyledComponents"
+
+const StyledPage = styled(Page)`
+  margin-top: 4rem;
+`
 
 const Header = styled.header`
   display: flex;
@@ -18,11 +25,12 @@ const Header = styled.header`
   align-items: center;
   text-align: center;
   max-width: 896px;
-  margin-top: -1rem;
+  padding: 0 2rem;
 `
 const H1 = styled.h1`
-  color: ${(props) => props.theme.colors.text};
   ${Mixins.textLevel2}
+  margin-top: 0;
+  color: ${(props) => props.theme.colors.text};
   font-style: normal;
   font-weight: normal;
   font-family: "SFMono-Regular", monospace;
@@ -62,16 +70,11 @@ const StackContainer = styled(Content)`
   }
 `
 
-const ActionCardContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
+const StyledCardGrid = styled(CardGrid)`
   margin-bottom: 2rem;
-  flex-wrap: wrap;
 `
 
 const LearningToolsPage = ({ data }) => {
-  const intl = useIntl()
-
   const sandboxes = [
     {
       name: "Ethereum Studio",
@@ -146,11 +149,10 @@ const LearningToolsPage = ({ data }) => {
   ]
 
   return (
-    <EdnPage>
+    <StyledPage>
       <PageMetadata
-        title={intl.formatMessage({ id: "page-build-meta-title" })}
-        description={intl.formatMessage({ id: "page-build-meta-description" })}
-        image={data.ogImage.childImageSharp.fixed.src}
+        title="Developer learning tools"
+        description="Web-based coding tools and interactive learning experiences to help you experiment with Ethereum development."
       />
       <Header>
         <H1>Learn by coding</H1>
@@ -165,7 +167,7 @@ const LearningToolsPage = ({ data }) => {
           These sandboxes will give you a space to experiment with writing smart
           contracts and understanding Ethereum.
         </p>
-        <ActionCardContainer>
+        <StyledCardGrid>
           {sandboxes.map((sandbox, idx) => {
             return (
               <ProductCard
@@ -180,7 +182,7 @@ const LearningToolsPage = ({ data }) => {
               </ProductCard>
             )
           })}
-        </ActionCardContainer>
+        </StyledCardGrid>
         <InfoBanner emoji=":point_up:">
           Remix is not just a sandbox. Many developers write, compile and deploy
           their smart contracts using Remix.
@@ -192,7 +194,7 @@ const LearningToolsPage = ({ data }) => {
           Learn while you play. These tutorials get you through the basics using
           gameplay.
         </p>
-        <ActionCardContainer>
+        <StyledCardGrid>
           {games.map((game, idx) => {
             return (
               <ProductCard
@@ -207,12 +209,12 @@ const LearningToolsPage = ({ data }) => {
               </ProductCard>
             )
           })}
-        </ActionCardContainer>
+        </StyledCardGrid>
       </StackContainer>
       <StackContainer>
         <SubtitleTwo>Developer bootcamps</SubtitleTwo>
         <p>Paid online courses to get you up to speed, fast.</p>
-        <ActionCardContainer>
+        <StyledCardGrid>
           {bootcamps.map((bootcamp, idx) => {
             return (
               <ProductCard
@@ -227,7 +229,7 @@ const LearningToolsPage = ({ data }) => {
               </ProductCard>
             )
           })}
-        </ActionCardContainer>
+        </StyledCardGrid>
       </StackContainer>
       <Content>
         <CalloutBanner
@@ -237,11 +239,11 @@ const LearningToolsPage = ({ data }) => {
           you need."
         >
           <div>
-            <Button to="/en/developers/docs/">Browse docs</Button>
+            <ButtonLink to="/en/developers/docs/">Browse docs</ButtonLink>
           </div>
         </CalloutBanner>
       </Content>
-    </EdnPage>
+    </StyledPage>
   )
 }
 
@@ -257,7 +259,6 @@ export const learningToolImage = graphql`
   }
 `
 
-// TODO get larger ogImage (1200px width)
 export const query = graphql`
   query {
     zeroX: file(relativePath: { eq: "build/0x.png" }) {
@@ -286,13 +287,6 @@ export const query = graphql`
     }
     studio: file(relativePath: { eq: "build/studio.png" }) {
       ...learningToolImage
-    }
-    ogImage: file(relativePath: { eq: "ethereum-studio-image.png" }) {
-      childImageSharp {
-        fixed(width: 896) {
-          src
-        }
-      }
     }
     learn: file(relativePath: { eq: "enterprise-eth.png" }) {
       childImageSharp {

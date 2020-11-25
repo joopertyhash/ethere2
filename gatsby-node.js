@@ -88,6 +88,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
             frontmatter {
               lang
+              template
             }
           }
         }
@@ -103,7 +104,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const slug = node.fields.slug
     const relativePath = node.fields.relativePath
 
-    let template = `static`
+    // Set template of markdown files
+    const nodeTemplate = node.frontmatter.template
+    let template = nodeTemplate ? nodeTemplate : `static`
     if (slug.includes(`/tutorials/`)) {
       template = `tutorial`
     } else if (slug.includes(`/docs/`)) {
@@ -139,6 +142,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const versionTwoPages = [
     `assets`,
     `eth`,
+    `dapps`,
     `developers/index`,
     `developers/learning-tools`,
     `developers/local-environment`,
@@ -199,6 +203,14 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Frontmatter {
       sidebar: Boolean
       sidebarDepth: Int
+      incomplete: Boolean
+      template: String
+      summaryPoints: [String!]!
+    }
+    type Eth2BountyHuntersCsv implements Node {
+      username: String,
+      name: String,
+      score: Int
     }
   `
   createTypes(typeDefs)
